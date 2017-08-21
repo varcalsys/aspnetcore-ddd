@@ -13,13 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\images\banner1.svg" />
-    <Content Include="wwwroot\images\banner2.svg" />
-    <Content Include="wwwroot\images\banner3.svg" />
-    <Content Include="wwwroot\images\banner4.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
   <ItemGroup>
