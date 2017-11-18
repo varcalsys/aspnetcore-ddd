@@ -1,6 +1,8 @@
-﻿using Infra.Dados.Comuns.Contextos;
+﻿using Dominio.Base.Contratos.Transacoes;
+using Infra.Dados.Comuns.Contextos;
 using Infra.Dados.Comuns.Transacoes;
 using Microsoft.Extensions.DependencyInjection;
+using NucleoCompartilhado.DomainEvents.Events;
 using NucleoCompartilhado.DomainEvents.Notifications.DomainNotifications;
 
 namespace Utilitarios.IoC
@@ -11,9 +13,12 @@ namespace Utilitarios.IoC
         {
             services.AddScoped<IDomainNotificationHandler, DomainNotificationHandler>();
 
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<EfContext>(ServiceLifetime.Scoped);
+
+
+            DomainEvent.ServiceProvider = services.BuildServiceProvider();
+
         }
     }
 }

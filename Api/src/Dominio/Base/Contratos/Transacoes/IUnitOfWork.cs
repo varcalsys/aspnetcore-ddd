@@ -1,4 +1,4 @@
-﻿namespace Infra.Dados.Comuns.Transacoes
+﻿namespace Dominio.Base.Contratos.Transacoes
 {
     public interface IUnitOfWork
     {
