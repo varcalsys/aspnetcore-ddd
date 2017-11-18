@@ -1,4 +1,5 @@
-﻿using Infra.Dados.Comuns.Contextos;
+﻿using Dominio.Base.Contratos.Transacoes;
+using Infra.Dados.Comuns.Contextos;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Infra.Dados.Comuns.Transacoes

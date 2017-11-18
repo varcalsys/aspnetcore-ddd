@@ -6,9 +6,7 @@ namespace NucleoCompartilhado.DomainEvents.Events
 {
     public abstract class DomainEvent
     {
-        public static Func<IServiceProvider> ContainerAccessor { get; set; }
-
-        public static IServiceProvider Container => ContainerAccessor?.Invoke();
+        public static IServiceProvider ServiceProvider { get; set; }
 
         public string EventType { get; protected set; }
 
@@ -20,9 +18,9 @@ namespace NucleoCompartilhado.DomainEvents.Events
 
         public static void RaiseEvent<T>(T theEvent) where T : Event
         {
-            if (Container == null) return;
+            if (ServiceProvider == null) return;
 
-            var obj = Container.GetService(theEvent.EventType.Equals(nameof(DomainNotification)) ? typeof(IDomainNotificationHandler) : typeof(IHandler<T>));
+            var obj = ServiceProvider.GetService(theEvent.EventType.Equals(nameof(DomainNotification)) ? typeof(IDomainNotificationHandler) : typeof(IHandler<T>));
             ((IHandler<T>)obj).Handle(theEvent);
         }
     }
