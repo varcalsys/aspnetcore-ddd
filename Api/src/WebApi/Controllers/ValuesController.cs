@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Aplicacao.Servicos;
 using Microsoft.AspNetCore.Mvc;
 using NucleoCompartilhado.DomainEvents.Events;
 using NucleoCompartilhado.DomainEvents.Notifications.DomainNotifications;
@@ -8,10 +9,12 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class ValuesController : BaseController
     {
-        public ValuesController(IDomainNotificationHandler domainNotificationHandler) 
+        private readonly ITesteAppService _testeAppService;
+
+        public ValuesController(IDomainNotificationHandler domainNotificationHandler, ITesteAppService testeAppService) 
             : base(domainNotificationHandler)
         {
-
+            _testeAppService = testeAppService;
         }
 
 
@@ -19,7 +22,7 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-           DomainEvent.RaiseEvent(new DomainNotification("Teste", "teste"));
+           _testeAppService.Salvar();
 
            return CreateResponse(new {teste = "teste"});
         } 

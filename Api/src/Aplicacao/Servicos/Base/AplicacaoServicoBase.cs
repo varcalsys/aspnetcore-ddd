@@ -12,7 +12,7 @@ namespace Aplicacao.Servicos.Base
 
         protected AplicacaoServicoBase(IUnitOfWork uow)
         {
-            _notifications = (IDomainNotificationHandler)DomainEvent.ContainerAccessor().GetService(typeof(IDomainNotificationHandler));
+            _notifications = (IDomainNotificationHandler)DomainEvent.ServiceProvider.GetService(typeof(IDomainNotificationHandler));
             _uow = uow;
         }
 

@@ -1,4 +1,6 @@
-﻿using Dominio.Base.Contratos.Transacoes;
+﻿using Aplicacao.Servicos;
+using Aplicacao.Servicos.Base;
+using Dominio.Base.Contratos.Transacoes;
 using Infra.Dados.Comuns.Contextos;
 using Infra.Dados.Comuns.Transacoes;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,7 @@ namespace Utilitarios.IoC
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<EfContext>(ServiceLifetime.Scoped);
 
+            services.AddScoped<ITesteAppService, TesteAppService>();
 
             DomainEvent.ServiceProvider = services.BuildServiceProvider();
 
