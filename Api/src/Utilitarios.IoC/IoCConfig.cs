@@ -20,7 +20,7 @@ namespace Utilitarios.IoC
 
             services.AddScoped<ITesteAppService, TesteAppService>();
 
-            DomainEvent.ServiceProvider = services.BuildServiceProvider();
+            //DomainEvent.ServiceProvider = services.BuildServiceProvider();
 
         }
     }

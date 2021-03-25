@@ -33,7 +33,7 @@ namespace Api
             }
 
             app.UseMvc();
-            //DomainEvent.ContainerAccessor = () => new HttpContextAccessor().HttpContext.RequestServices;
+            DomainEvent.ContainerAccessor = () => new HttpContextAccessor().HttpContext.RequestServices;
         }
     }
 }

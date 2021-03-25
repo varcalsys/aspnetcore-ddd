@@ -6,7 +6,9 @@ namespace NucleoCompartilhado.DomainEvents.Events
 {
     public abstract class DomainEvent
     {
-        public static IServiceProvider ServiceProvider { get; set; }
+        public static Func<IServiceProvider> ContainerAccessor { get; set; }
+
+        public static IServiceProvider ServiceProvider => ContainerAccessor?.Invoke();
 
         public string EventType { get; protected set; }
 
