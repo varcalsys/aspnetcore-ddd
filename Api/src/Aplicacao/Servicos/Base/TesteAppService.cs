@@ -10,7 +10,7 @@ namespace Aplicacao.Servicos.Base
     {
         public void Salvar()
         {
-            DomainEvent.RaiseEvent(new DomainNotification("Teste", "teste"));
+            DomainEvent.RaiseEvent(new DomainNotification("Teste", "Teste DomainNotification"));
         }
 
         public TesteAppService(IUnitOfWork uow) : base(uow)
