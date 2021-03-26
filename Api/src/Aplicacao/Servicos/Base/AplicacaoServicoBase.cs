@@ -1,5 +1,4 @@
 ﻿using Dominio.Base.Contratos.Transacoes;
-using Infra.Dados.Comuns.Transacoes;
 using NucleoCompartilhado.DomainEvents.Events;
 using NucleoCompartilhado.DomainEvents.Notifications.DomainNotifications;
 

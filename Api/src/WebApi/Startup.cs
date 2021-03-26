@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using NucleoCompartilhado.DomainEvents.Events;
 using Utilitarios.IoC;
 
@@ -21,19 +22,24 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddHttpContextAccessor();
             IoCConfig.RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IHttpContextAccessor accessor)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHttpContextAccessor accessor)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
-            DomainEvent.ContainerAccessor = () => accessor.HttpContext.RequestServices;
+            app.UseRouting();
+            app.UseEndpoints(x =>
+            {
+                x.MapDefaultControllerRoute();
+            });
+            DomainEvent.ContainerAccessor = () => accessor.HttpContext?.RequestServices;
         }
     }
 }
