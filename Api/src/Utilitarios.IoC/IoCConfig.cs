@@ -4,7 +4,6 @@ using Dominio.Base.Contratos.Transacoes;
 using Infra.Dados.Comuns.Contextos;
 using Infra.Dados.Comuns.Transacoes;
 using Microsoft.Extensions.DependencyInjection;
-using NucleoCompartilhado.DomainEvents.Events;
 using NucleoCompartilhado.DomainEvents.Notifications.DomainNotifications;
 
 namespace Utilitarios.IoC
@@ -19,9 +18,6 @@ namespace Utilitarios.IoC
             services.AddDbContext<EfContext>(ServiceLifetime.Scoped);
 
             services.AddScoped<ITesteAppService, TesteAppService>();
-
-            //DomainEvent.ServiceProvider = services.BuildServiceProvider();
-
         }
     }
 }
