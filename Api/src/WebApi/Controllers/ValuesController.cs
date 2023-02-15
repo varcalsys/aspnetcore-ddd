@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Mime;
+using System.Threading.Tasks;
 using Aplicacao.Servicos;
 using Microsoft.AspNetCore.Mvc;
 using NucleoCompartilhado.DomainEvents.Events;
@@ -6,7 +7,11 @@ using NucleoCompartilhado.DomainEvents.Notifications.DomainNotifications;
 
 namespace Api.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiController]
+    [ApiVersion("1")]
+    [Produces(MediaTypeNames.Application.Json)]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ValuesController : BaseController
     {
         private readonly ITesteAppService _testeAppService;
